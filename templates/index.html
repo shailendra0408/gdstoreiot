@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <link rel="stylesheet" href="../static/assets/css/material.min.css">
+    <link rel="stylesheet" href="../static/assets/css/material-tapp.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-amber.min.css" />
+    <link rel="stylesheet" href="../static/assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPI home control</title>
+    <style>
+.demo-card-wide.mdl-card {
+  width: 512px;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #FFF;
+  height: 286px;
+  background: url('../static/assets/images/pi_logo_1.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+</style>
+<body background="../static/assets/images/smart_home_1.png" >
+<!-- Always shows a header, even in smaller screens. -->
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">RPI Home Control</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation. We hide it in small screens. -->
+      <nav class="mdl-navigation mdl-layout--large-screen-only">
+        <a class="mdl-navigation__link" href="">Admin</a>
+        <a class="mdl-navigation__link" href="">Blog</a>
+        <a class="mdl-navigation__link" href="">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <!-- Your content goes here -->
+
+
+      <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+       
+
+        <div class="mdl-card__actions mdl-card--border">
+    
+          <!-- load java script part here-->
+          <div id="line-chart"></div>
+        </div>
+        <div class="mdl-card__menu">
+          <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+            <i class="material-icons">share</i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+<script src="../static/assets/js/material.min.js"></script>
+<script src="../static/assets/js/plotly_min.js">
+  var lineDiv = document.getElementById('line-chart');
+
+  var traceA = {
+    x: [1, 2, 3, 4, 16, 17, 26],
+    y: [1, 40, 9, 60, 4, 20, 10],
+    type: 'scatter'
+      };
+
+  var data = [traceA];
+
+  var layout = {
+    title:'A Line Chart in Plotly'
+  };
+
+  Plotly.plot( lineDiv, data, layout );
+</script>
+</body>
+</html>
