@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <link rel="stylesheet" href="../static/assets/css/material.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-amber.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDStore Project</title>
+    <style>
+      #line-chart {
+  margin: 0 auto;
+  height: 350px;
+}
+#line-chart1 {
+  margin: 0 auto;
+  height: 350px;
+}
+#line-chart2 {
+  margin: 0 auto;
+  height: 350px;
+}
+
+</style>
+<body >
+
+<!-- Always shows a header, even in smaller screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Project GDStore</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="">Admin</a>
+          <a class="mdl-navigation__link" href="">Git Repo</a>
+          <a class="mdl-navigation__link" href="">Contact Us</a>
+          <a class="mdl-navigation__link" href="">Project</a>
+        </nav>
+      </div>
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Admin</a>
+        <a class="mdl-navigation__link" href="">Git Repo</a>
+        <a class="mdl-navigation__link" href="">About Project</a>
+        <a class="mdl-navigation__link" href="">Contact Us</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+          <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--4-col">
+                  <div id="line-chart"></div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col">
+                  <div id="line-chart1"></div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col">
+                  <div id="line-chart2"></div>
+              </div>
+            </div>
+      </div>
+    </main>
+  </div>
+  
+
+<script src="../static/assets/js/material.min.js"></script>
+<script src="../static/assets/js/plotly_min.js"></script>
+<script>
+  var lineDiv = document.getElementById('line-chart');
+
+  var traceA = {
+    x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
+    y: [1, 2,3,6,8,9,11,15,17,25,19,31,30,27,35 ,29, 36, 34, 30, 31],
+    type: 'scatter'
+      };
+
+  var data = [traceA];
+
+  var layout = {
+    title:'Temperature Variation'
+  };
+
+  Plotly.plot( lineDiv, data, layout );
+</script>
+<script>
+    var lineDiv = document.getElementById('line-chart1');
+  
+    var traceA = {
+      x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
+      y: [1, 2,3,6,8,9,11,15,17,15,29,21,20,19,25 ,19, 16, 14, 20, 10],
+      type: 'scatter'
+        };
+  
+    var data = [traceA];
+  
+    var layout = {
+      title:'Humidity Variation'
+    };
+  
+    Plotly.plot( lineDiv, data, layout );
+  </script>
+  <script>
+      var lineDiv = document.getElementById('line-chart2');
+    
+      var traceA = {
+        x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
+        y: [1, 2,3,6,8,9,11,15,17,25,19,31,30,27,35 ,9, 6, 4, 20, 10],
+        type: 'scatter'
+          };
+    
+      var data = [traceA];
+    
+      var layout = {
+        title:'PM2.5 Variation'
+      };
+    
+      Plotly.plot( lineDiv, data, layout );
+    </script>
+</body>
+</html>
