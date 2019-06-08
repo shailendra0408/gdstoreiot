@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GDStore Project</title>
     <style>
-      #line-chart {
+#line-chart {
   margin: 0 auto;
   height: 350px;
 }
@@ -16,6 +16,10 @@
   height: 350px;
 }
 #line-chart2 {
+  margin: 0 auto;
+  height: 350px;
+}
+#line-chart3 {
   margin: 0 auto;
   height: 350px;
 }
@@ -52,14 +56,17 @@
     <main class="mdl-layout__content">
       <div class="page-content">
           <div class="mdl-grid">
-              <div class="mdl-cell mdl-cell--4-col">
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
                   <div id="line-chart"></div>
               </div>
-              <div class="mdl-cell mdl-cell--4-col">
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
                   <div id="line-chart1"></div>
               </div>
-              <div class="mdl-cell mdl-cell--4-col">
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
                   <div id="line-chart2"></div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
+                  <div id="line-chart3"></div>
               </div>
             </div>
       </div>
@@ -105,6 +112,23 @@
   </script>
   <script>
       var lineDiv = document.getElementById('line-chart2');
+    
+      var traceA = {
+        x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
+        y: [1, 2,3,6,8,9,11,15,17,25,19,31,30,27,35 ,9, 6, 4, 20, 10],
+        type: 'scatter'
+          };
+    
+      var data = [traceA];
+    
+      var layout = {
+        title:'PM2.5 Variation'
+      };
+    
+      Plotly.plot( lineDiv, data, layout );
+    </script>
+    <script>
+      var lineDiv = document.getElementById('line-chart3');
     
       var traceA = {
         x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
