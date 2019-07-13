@@ -7,8 +7,10 @@ import collections
 import thread
 
 
-from flask import Flask
+from flask import Flask, render_template, request, redirect, url_for, escape, session, make_response, request, jsonify  
 from google.cloud import datastore
+
+
 
 #global variables declaration 
 templist = []
@@ -33,7 +35,30 @@ logger.addHandler(handler)
 
 application = Flask(__name__)
 
-@application.route("/")
+application.secret_key = "saksh2iuyw2klhqwshswi"
+
+@application.route("/", methods = ['GET', 'POST'])
+def landingPage():
+    return render_template("index.html", user = "")
+
+@application.route("/userverifictaion", methods = ['GET', 'POST'])
+def userverification():
+    if request.method == "POST" :
+        logger.info("Inside userverification method")
+        user_emailid = 0
+        user_pass    = 0
+        user_emailid = request.form['user_emailid']
+        user_pass    = request.form['user_pass']
+        logger.debug('email id is %s and %s', user_emailid, user_pass)
+        user_exist = check_if_user_exist (user_emailid, user_pass)
+
+def check_if_user_exist(emailid,upassword)
+    logger.info("Inside check_if_user_exist function")
+    query_user_exist = """SELECT * FROM ADMIN_DATA WHERE EMAIL_ID = %s"""
+    args = (emailid)
+    
+
+@application.route("/gdstoretest")
 def hello():
     logger.info("enter into gdstore function")
     get_gdstore_data()
