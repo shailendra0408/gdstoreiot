@@ -1,0 +1,9 @@
+
+13/07/2019
+1. Added mysql 
+2. Add user 
+3. Test the functionality of user existance and login
+
+14/07/2019 
+4. Depending upon number of devices, land user on the page with device details 
+5. When user click on the specific devices, he/she should be able to access the data 
