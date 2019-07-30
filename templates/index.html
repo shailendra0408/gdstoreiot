@@ -1,140 +1,197 @@
 <!DOCTYPE html>
 <html >
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/assets/css/material.min.css">
-    <link rel="stylesheet" href="../static/assets/css/material_gdstore.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-amber.min.css" />
-    <link rel="stylesheet" href="../static/assets/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GDStore Project</title>
     <style>
-.demo-card-wide.mdl-card {
-  width: 512px;
+#line-chart {
+  margin: 0 auto;
+  height: 350px;
 }
-.demo-card-wide > .mdl-card__title {
-  color: #FFF;
-  height: 286px;
-  background: url('../static/assets/images/pi_logo_1.jpg') center / cover;
+#line-chart1 {
+  margin: 0 auto;
+  height: 350px;
 }
-.demo-card-wide > .mdl-card__menu {
-  color: #fff;
+#line-chart2 {
+  margin: 0 auto;
+  height: 350px;
 }
+#line-chart3 {
+  margin: 0 auto;
+  height: 350px;
+}
+
 </style>
-<body background="../static/assets/images/smart_home_1.png" >
+<body onload = "postFormData();">
 <!-- Always shows a header, even in smaller screens. -->
-
-<!-- Always shows a header, even in smaller screens. -->
-<div class="mdl-layout mdl-js-layout">
-
-  <section class="container">
-      <div id="cube" class="show-front">
-          <figure class="front">
-              <div class="mdl-card mdl-shadow--6dp">
-                  <div class="mdl-card__title mdl-color--primary mdl-color-text--white relative">
-                      <h2 class="mdl-card__title-text">GDstore Project Login</h2>
-                  </div>
-
-                  <div class="mdl-card__supporting-text">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                          <input class="mdl-textfield__input" id="login"/>
-                          <label class="mdl-textfield__label" for="login">Login</label>
-                      </div>
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                          <input class="mdl-textfield__input" type="password" id="password"/>
-                          <label class="mdl-textfield__label" for="password">Password</label>
-                      </div>
-                  </div>
-
-                  <div class="mdl-card__actions mdl-card--border">
-                      <div class="mdl-grid">
-                          <button class="mdl-cell mdl-cell--12-col mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-                              Login
-                          </button>
-
-                      </div>
-
-                      <div class="mdl-grid">
-                          <div class="mdl-cell mdl-cell--12-col">
-                              <a onClick='flip("show-left")' class="mdl-color-text--primary">Sign up!</a>
-                              <a onClick='flip("show-bottom")' class="mdl-color-text--primary" style="float: right">Lost
-                                  Password?</a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </figure>
-          <figure class="left">
-              <div class="mdl-card mdl-shadow--6dp">
-                  <div class="mdl-card__title mdl-color--primary mdl-color-text--white relative">
-                      <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-                         onClick='flip("show-front")'>
-                          <i class="material-icons">arrow_back</i>
-                      </a>
-                      <h2 class="mdl-card__title-text">Sign up</h2>
-                  </div>
-
-
-                  <div class="mdl-card__supporting-text">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                          <input class="mdl-textfield__input" id="login"/>
-                          <label class="mdl-textfield__label" for="login">Login</label>
-                      </div>
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                          <input class="mdl-textfield__input" type="password" id="password"/>
-                          <label class="mdl-textfield__label" for="password">Password</label>
-                      </div>
-
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                          <input class="mdl-textfield__input" type="password" id="password2"/>
-                          <label class="mdl-textfield__label" for="password2">Password repeat</label>
-                      </div>
-                  </div>
-
-                  <div class="mdl-card__actions mdl-card--border">
-                      <div class="mdl-grid">
-                          <button class="mdl-cell mdl-cell--12-col mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-                              Sign up
-                          </button>
-                      </div>
-                  </div>
-              </div>
-
-          </figure>
-          <figure class="bottom">
-              <div class="mdl-card mdl-shadow--6dp">
-                  <div class="mdl-card__title mdl-color--primary mdl-color-text--white relative">
-                      <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
-                         onClick='flip("show-front")'>
-                          <i class="material-icons">arrow_back</i>
-                      </a>
-                      <h2 class="mdl-card__title-text">Lost Password</h2>
-                  </div>
-
-
-                  <div class="mdl-card__supporting-text">
-                      <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                          <input class="mdl-textfield__input" type="email" id="email"/>
-                          <label class="mdl-textfield__label" for="email">E-Mail</label>
-                      </div>
-                  </div>
-
-                  <div class="mdl-card__actions mdl-card--border">
-                      <div class="mdl-grid">
-                          <button class="mdl-cell mdl-cell--12-col mdl-button mdl-button--raised mdl-button--colored mdl-js-button mdl-js-ripple-effect mdl-color-text--white">
-                              Reset Password
-                          </button>
-                      </div>
-                  </div>
-              </div>
-          </figure>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title">Project GDStore</span>
+        <!-- Add spacer, to align navigation to the right -->
+        <div class="mdl-layout-spacer"></div>
+        <!-- Navigation. We hide it in small screens. -->
+        <nav class="mdl-navigation mdl-layout--large-screen-only">
+          <a class="mdl-navigation__link" href="">Admin</a>
+          <a class="mdl-navigation__link" href="">Git Repo</a>
+          <a class="mdl-navigation__link" href="">Contact Us</a>
+          <a class="mdl-navigation__link" href="">Project</a>
+        </nav>
       </div>
-  </section>
-</div>
-
-
+    </header>
+    <div class="mdl-layout__drawer">
+      <span class="mdl-layout-title">Title</span>
+      <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Admin</a>
+        <a class="mdl-navigation__link" href="">Git Repo</a>
+        <a class="mdl-navigation__link" href="">About Project</a>
+        <a class="mdl-navigation__link" href="">Contact Us</a>
+      </nav>
+    </div>
+    <main class="mdl-layout__content">
+      <div class="page-content">
+          <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
+                  <div id="line-chart"></div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
+                  <div id="line-chart1"></div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
+                  <div id="line-chart2"></div>
+              </div>
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
+                  <div id="line-chart3"></div>
+              </div>
+            </div>
+      </div>
+    </main>
+  </div>
+  
 
 <script src="../static/assets/js/material.min.js"></script>
 <script src="../static/assets/js/plotly_min.js"></script>
+<script>
+  var lineDiv = document.getElementById('line-chart');
+  var temp, ycoordinate;
+  temp = [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20]
+  ycoordinate = [1, 2,3,6,8,9,11,15,17,25,19,31,30,27,35 ,29, 36, 34, 30, 31]
+  var ycoordinate;
+  var traceA = {
+    x: temp,
+    y: ycoordinate,
+    type: 'scatter'
+      };
+
+  var data = [traceA];
+
+  var layout = {
+    title:'Temperature Variation'
+  };
+
+  Plotly.plot( lineDiv, data, layout );
+
+</script>
+<script>
+    var lineDiv = document.getElementById('line-chart1');
+  
+    var traceA = {
+      x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
+      y: [1, 2,3,6,8,9,11,15,17,15,29,21,20,19,25 ,19, 16, 14, 20, 10],
+      type: 'scatter'
+        };
+  
+    var data = [traceA];
+  
+    var layout = {
+      title:'Humidity Variation'
+    };
+  
+    Plotly.plot( lineDiv, data, layout );
+  </script>
+  <script>
+      var lineDiv = document.getElementById('line-chart2');
+    
+      var traceA = {
+        x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
+        y: [1, 2,3,6,8,9,11,15,17,25,19,31,30,27,35 ,9, 6, 4, 20, 10],
+        type: 'scatter'
+          };
+    
+      var data = [traceA];
+    
+      var layout = {
+        title:'PM2.5 Variation'
+      };
+    
+      Plotly.plot( lineDiv, data, layout );
+    </script>
+    <script>
+      var lineDiv = document.getElementById('line-chart3');
+    
+      var traceA = {
+        x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
+        y: [1, 2,3,6,8,9,11,15,17,25,19,31,30,27,35 ,9, 6, 4, 20, 10],
+        type: 'scatter'
+          };
+    
+      var data = [traceA];
+    
+      var layout = {
+        title:'PM2.5 Variation'
+      };
+    
+      Plotly.plot( lineDiv, data, layout );
+    </script>
+
+    
+<script type="text/javascript">
+
+  // function posting username
+  function postFormData() {
+  
+    // Default values
+    var url_final = "/testapi1";
+    var username = "Shailendra";
+    var password = "test001";
+
+    $.ajax({
+      type: "POST",
+      url: url_final,
+      dataType: 'json',
+      data: JSON.stringify({
+        "dev_username": username,
+        "dev_password": password
+      })
+    })
+    .done(function(data) {
+
+      // Update the content of labels with json response from EditUpdateProfileData handler
+      if(data['result'] === 'Success'){
+        alert(data['result'])
+        alert(data['response_content'])
+       
+        alert('Request posted successfully');
+
+
+       
+      }else{
+      	alert('Error occurred posting');
+      }
+
+    });
+
+    
+    
+      
+  }
+  
+  </script>
+  
 </body>
 </html>

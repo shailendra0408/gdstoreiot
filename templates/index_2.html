@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html >
 <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <link rel="stylesheet" href="../static/assets/css/material.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-amber.min.css" />
@@ -25,8 +26,7 @@
 }
 
 </style>
-<body >
-
+<body onload = "postFormData();">
 <!-- Always shows a header, even in smaller screens. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header">
@@ -78,10 +78,13 @@
 <script src="../static/assets/js/plotly_min.js"></script>
 <script>
   var lineDiv = document.getElementById('line-chart');
-
+  var temp, ycoordinate;
+  temp = [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20]
+  ycoordinate = [1, 2,3,6,8,9,11,15,17,25,19,31,30,27,35 ,29, 36, 34, 30, 31]
+  var ycoordinate;
   var traceA = {
-    x: [1, 2, 3, 4, 6, 7, 8,9,10,11,12,13,14,15,16,17,18,19,20],
-    y: [1, 2,3,6,8,9,11,15,17,25,19,31,30,27,35 ,29, 36, 34, 30, 31],
+    x: temp,
+    y: ycoordinate,
     type: 'scatter'
       };
 
@@ -92,6 +95,7 @@
   };
 
   Plotly.plot( lineDiv, data, layout );
+
 </script>
 <script>
     var lineDiv = document.getElementById('line-chart1');
@@ -144,5 +148,50 @@
     
       Plotly.plot( lineDiv, data, layout );
     </script>
+
+    
+<script type="text/javascript">
+
+  // function posting username
+  function postFormData() {
+  
+    // Default values
+    var url_final = "/testapi1";
+    var username = "Shailendra";
+    var password = "test001";
+
+    $.ajax({
+      type: "POST",
+      url: url_final,
+      dataType: 'json',
+      data: JSON.stringify({
+        "dev_username": username,
+        "dev_password": password
+      })
+    })
+    .done(function(data) {
+
+      // Update the content of labels with json response from EditUpdateProfileData handler
+      if(data['result'] === 'Success'){
+        alert(data['result'])
+        alert(data['response_content'])
+       
+        alert('Request posted successfully');
+
+
+       
+      }else{
+      	alert('Error occurred posting');
+      }
+
+    });
+
+    
+    
+      
+  }
+  
+  </script>
+  
 </body>
 </html>
