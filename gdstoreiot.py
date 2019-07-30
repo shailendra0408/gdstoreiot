@@ -40,7 +40,7 @@ application.secret_key = "saksh2iuyw2klhqwshswi"
 @application.route("/", methods = ['GET', 'POST'])
 def landingPage():
     logger.info("inside / handler")
-    return render_template("index_1.html", user = "")
+    return render_template("index.html", user = "")
 
 @application.route("/testapi1", methods = ['GET', 'POST'])
 def testapi1():
@@ -51,7 +51,9 @@ def testapi1():
         print content
         print message 
         hello()
-        return json.dumps({"result":"Success", "response_content":message })
+        print templist
+        print humlist
+        return json.dumps({"result":"Success", "response_content":templist })
 
 
 
@@ -92,7 +94,7 @@ def get_gdstore_data():
     result = list(query.fetch())
     logger.info("Data fetched from server is")
     print result
-    logger.info(result)
+    #logger.info(result)
     prepare_templist(result)
     prepare_humiditylist(result)
 
@@ -102,7 +104,7 @@ def prepare_templist(result):
         try:
             print "Temperature : {0}".format(data['Temp'])
             templist.append(data['Temp'])
-            print templist 
+            #print templist 
         except KeyError:
            pass 
 
@@ -111,7 +113,7 @@ def prepare_humiditylist(result):
         try:
             print "Humidity : {0}".format(data['Humidity '])
             humlist.append(data['Humidity '])
-            print humlist
+            #print humlist
         except KeyError:
            pass
 
