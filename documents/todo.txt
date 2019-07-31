@@ -7,3 +7,51 @@
 14/07/2019 
 4. Depending upon number of devices, land user on the page with device details 
 5. When user click on the specific devices, he/she should be able to access the data 
+
+29/07/2019 
+1. Once the user login, then he/she has to be redirected to the page where
+his devices are shown. Now there can be two ways for this, either the gdstore provides a
+API which return all the serial numbers or we provide user a form where he/she can manually 
+enter the device serial number, which we pass as a variable in the data fetch function 
+
+Table 
+Id | user | device serial number | 
+
+--> user login 
+--> Check credentials 
+    --> verify if user exist 
+    --> verify login id and password 
+--> check if user already has devices 
+    --> verify against the email Id
+    --> If devices are there, re-direct user to the page with device information 
+    --> if devices are not there, ask user to create device 
+        --> It would be a form where user simply write the serial number 
+        --> this serial number is stored in a user_device tables against his/her email 
+--> Once user click on the device, pass the serial number, retrieve the serial number 
+on python side, use that serial number to get data from the gdstore. 
+--> pass the data back using a dict to the java script. 
+
+Note
+1. Now here calling the API again and again with different filters, call only 1 API 
+and store the data in cache. For this, you need to find out how to store data in cache
+and which cache to be used?
+Answer - https://medium.com/the-python-corner/how-to-make-your-code-faster-by-using-a-cache-in-python-fb169fbcbb0b
+         https://realpython.com/python-memcache-efficient-caching/
+30/07/2019 
+1. Call the API to fetch data when the page load. Get data is respective dictionaries
+2. Return the corresponding dictionaries. 
+3. Now is somone need data for last 1 month, call another function with different filter 
+(for last 1 month in unix timestamp), return the data. 
+4. While returning the response to a function, make sure its non-blocking type
+
+
+31/07/2019 
+links for simulating the device using MQTT 
+1. https://cloud.google.com/community/tutorials/cloud-iot-rtdp
+2. https://cloud.google.com/solutions/iot-overview
+3. https://cloud.google.com/solutions/iot/
+4. https://cloud.google.com/iot/docs/samples/end-to-end-sample
+
+@To-do
+1. Some documentation about GDStore for example what is entity, variables, what is the id and all 
+that. Have totally forgot it 
