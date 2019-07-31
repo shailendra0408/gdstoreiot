@@ -24,6 +24,10 @@
   margin: 0 auto;
   height: 350px;
 }
+#line-chart4 {
+  margin: 0 auto;
+  height: 350px;
+}
 
 </style>
 <body onload = "postFormData();">
@@ -68,6 +72,9 @@
               <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
                   <div id="line-chart3"></div>
               </div>
+              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
+                <div id="line-chart4"></div>
+            </div>
             </div>
       </div>
     </main>
@@ -183,6 +190,30 @@
       }else{
       	alert('Error occurred posting');
       }
+
+      alert (data['response_content']);
+      // passed the data collected from the response to the the div element  
+
+      var lineDiv = document.getElementById('line-chart4');
+      var temp, ycoordinate;
+      temp = data['response_content']
+      ycoordinate = data['response_content']
+      var traceA = {
+          x: temp,
+          y: ycoordinate,
+          type: 'scatter'
+        };
+
+      var data = [traceA];
+
+      var layout = {
+        title:'API temperature Variation'
+      };
+
+      Plotly.plot( lineDiv, data, layout );
+
+
+
 
     });
 
