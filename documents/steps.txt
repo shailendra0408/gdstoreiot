@@ -1,0 +1,12 @@
+How to create API credetails to access data  
+
+	1. Go to API and Services
+	2. Select the rootsprit project
+	3. Click on create credentials
+	4. Then click on Service account key
+	5. The create new service account - provide name
+	6. Under role - select google data store and ownership to Owners
+	7. Select JSON
+	8. Download the file and share it with me
+
+or follow this link - https://cloud.google.com/datastore/docs/reference/libraries#client-libraries-install-python
