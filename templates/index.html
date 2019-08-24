@@ -26,7 +26,7 @@
 }
 #line-chart4 {
   margin: 0 auto;
-  height: 350px;
+  height: 450px;
 }
 
 </style>
@@ -72,10 +72,14 @@
               <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
                   <div id="line-chart3"></div>
               </div>
-              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
-                <div id="line-chart4"></div>
-            </div>
-            </div>
+              
+          </div>
+          <div class = "mdl-grid">
+              <div class="mdl-cell mdl-cell--12-col mdl-shadow--16dp">
+                  <div id="line-chart4"></div>
+              </div>
+          </div>
+
       </div>
     </main>
   </div>
@@ -181,26 +185,33 @@
       // Update the content of labels with json response from EditUpdateProfileData handler
       if(data['result'] === 'Success'){
         alert(data['result'])
-        alert(data['response_content'])
-       
-        alert('Request posted successfully');
-
-
-       
+        alert(JSON.stringify(data['response_content']))      
+        alert('Request posted successfully');     
       }else{
       	alert('Error occurred posting');
       }
 
-      alert (data['response_content']);
+      var cars = data['response_content'];
+      var x = cars.length;
+      alert (x);
+      var temperature = [];
+      var timestamp = [];
+      for (var i = 0; i < cars.length; ++i){
+        temperature.push(cars[i].temperature);
+        timestamp.push(cars[i].time);
+      }
+      
       // passed the data collected from the response to the the div element  
 
       var lineDiv = document.getElementById('line-chart4');
       var temp, ycoordinate;
-      temp = data['response_content']
-      ycoordinate = data['response_content']
+      temp = temperature;
+      ycoordinate = timestamp;
+      alert (temp);
+      alert (ycoordinate);
       var traceA = {
-          x: temp,
-          y: ycoordinate,
+          x: ycoordinate,
+          y: temp,
           type: 'scatter'
         };
 
