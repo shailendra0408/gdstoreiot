@@ -60,7 +60,7 @@ def testapi1():
         hello()
         print templist
         print humlist
-        return json.dumps({"result":"Success", "response_content":templist })
+        return json.dumps({"result":"Success", "response_content":templist, "response_humidity": humlist})
 
 
 
@@ -97,7 +97,7 @@ def get_gdstore_data():
     logger.info(client)
     query = client.query(kind='Thermo')
     query.add_filter('device_id', '=', '1c002e000347363339343638')
-    result = list(query.fetch(limit = 1000))
+    result = list(query.fetch(limit = 10))
     logger.info("Data fetched from server is")
     prepare_data(result)
     
