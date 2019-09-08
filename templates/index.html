@@ -28,6 +28,15 @@
   margin: 0 auto;
   height: 450px;
 }
+#line-chart5 {
+  margin: 0 auto;
+  height: 450px;
+}
+
+#line-chart6 {
+  margin: 0 auto;
+  height: 450px;
+}
 
 </style>
 <body onload = "postFormData();">
@@ -60,26 +69,26 @@
     <main class="mdl-layout__content">
       <div class="page-content">
           <div class="mdl-grid">
-              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
+              <div class="mdl-cell mdl-cell--12-col mdl-shadow--16dp">
                   <div id="line-chart"></div>
               </div>
-              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
-                  <div id="line-chart1"></div>
-              </div>
-              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
-                  <div id="line-chart2"></div>
-              </div>
-              <div class="mdl-cell mdl-cell--4-col mdl-shadow--16dp">
-                  <div id="line-chart3"></div>
-              </div>
-              
+                            
           </div>
           <div class = "mdl-grid">
               <div class="mdl-cell mdl-cell--12-col mdl-shadow--16dp">
                   <div id="line-chart4"></div>
               </div>
           </div>
-
+          <div class = "mdl-grid">
+              <div class="mdl-cell mdl-cell--12-col mdl-shadow--16dp">
+                  <div id="line-chart5"></div>
+              </div>
+          </div>
+          <div class = "mdl-grid">
+            <div class="mdl-cell mdl-cell--12-col mdl-shadow--16dp">
+                <div id="line-chart6"></div>
+            </div>
+        </div>
       </div>
     </main>
   </div>
@@ -165,12 +174,13 @@
 
   // function posting username
   function postFormData() {
-  
+    
     // Default values
     var url_final = "/testapi1";
     var username = "Shailendra";
     var password = "test001";
-
+    var data2 = [];
+    var data1 = [];
     $.ajax({
       type: "POST",
       url: url_final,
@@ -184,31 +194,35 @@
 
       // Update the content of labels with json response from EditUpdateProfileData handler
       if(data['result'] === 'Success'){
-        alert(data['result'])
-        alert(JSON.stringify(data['response_content']))      
-        alert('Request posted successfully');     
+        //alert(data['result'])
+        //alert(JSON.stringify(data['response_content'])) 
+        //alert(JSON.stringify(data['response_humidity'])) 
+        //alert(JSON.stringify(data['response_dew']))
+
+        data1 = data['response_content'];
+	      data2 = data['response_humidity'];
+        data3 = data['response_dew'];
+        //lert('Request posted successfully')   
       }else{
-      	alert('Error occurred posting');
+      	//alert('Error occurred posting');
       }
 
-      var cars = data['response_content'];
-      var x = cars.length;
-      alert (x);
+      // API temperature Variation
+      //alert (data1.length);
       var temperature = [];
       var timestamp = [];
-      for (var i = 0; i < cars.length; ++i){
-        temperature.push(cars[i].temperature);
-        timestamp.push(cars[i].time);
+      for (var i = 0; i < data1.length; ++i){
+        temperature.push(data1[i].temperature);
+        timestamp.push(data1[i].time);
       }
       
-      // passed the data collected from the response to the the div element  
 
       var lineDiv = document.getElementById('line-chart4');
       var temp, ycoordinate;
       temp = temperature;
       ycoordinate = timestamp;
-      alert (temp);
-      alert (ycoordinate);
+      //alert (temp);
+      //alert (ycoordinate);
       var traceA = {
           x: ycoordinate,
           y: temp,
@@ -220,11 +234,72 @@
       var layout = {
         title:'API temperature Variation'
       };
-
+     
       Plotly.plot( lineDiv, data, layout );
 
 
+      // For Humidity 
+      //alert (data2.length);
+      var humidityh = [];
+      var timestamph = [];
+      for (var j = 0; j< data2.length; ++j){
+          humidityh.push( data2[j].humidity);
+          timestamph.push( data2[j].time);
+      }
+      //alert (humidityh)
+      //alert (timestamph)
 
+      var lineDivdata2 = document.getElementById('line-chart5');
+      var hum, timeh;
+      temp = humidityh;
+      timeh = timestamph;
+      //alert (temp);
+      //alert (timeh);
+      var traceB = {
+          x: timeh,
+          y: humidityh,
+          type: 'scatter'
+        };
+
+      var datah = [traceB];
+
+      var layoutB = {
+        title:'API humidity Variation'
+      };
+     
+      Plotly.plot( lineDivdata2, datah, layoutB );
+
+      // for dew 
+      //alert (data3.length);
+      var dew = [];
+      var timestampdew = [];
+      for (k = 0;k < data3.length; ++k) {
+
+        dew.push(data3[k].dew);
+        timestampdew.push(data3[k].time);
+      }
+      //alert (dew)
+      //alert (timestampdew)
+
+      var lineDivdata3 = document.getElementById('line-chart6');
+      var dew1, timed;
+      dew1 = dew;
+      timed = timestampdew;
+      //alert (dew1);
+      //alert (timed);
+      var traceC = {
+          x: timed,
+          y: dew1,
+          type: 'scatter'
+        };
+
+      var datad = [traceC];
+
+      var layoutC = {
+        title:'API dew Variation'
+      };
+     
+      Plotly.plot( lineDivdata3, datad, layoutC );
 
     });
 

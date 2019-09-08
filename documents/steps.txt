@@ -10,3 +10,19 @@ How to create API credetails to access data
 	8. Download the file and share it with me
 
 or follow this link - https://cloud.google.com/datastore/docs/reference/libraries#client-libraries-install-python
+
+Other relevant links 
+(1)  https://cloud.google.com/datastore/docs/concepts/queries?_ga=2.134582769.-127005913.1558813371#datastore-datastore-basic-query-gql 
+(2) https://cloud.google.com/appengine/docs/standard/python/datastore/gqlreference
+(3) https://pypi.org/project/google-cloud-datastore/
+(4) https://cloud.google.com/datastore/docs/reference/libraries#client-libraries-install-python
+(5) https://pypi.org/project/google-cloud-datastore/
+(6) https://cloud.google.com/datastore/docs/reference/libraries#client-libraries-install-python 
+
+
+In order to have queries which required inequalities, either a index has to be created by default 
+or you have to create a index. NOw to create a index, you need to either have access to the online 
+portal or you can install gcloud. FOllow below link to install the gcloud
+--> https://cloud.google.com/sdk/docs/quickstart-linux
+
+Once gloud is installed, you need to cerate a index.yaml file and upload it to your project. 

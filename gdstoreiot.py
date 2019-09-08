@@ -6,6 +6,7 @@ import time
 import collections
 import thread
 import re 
+import datetime 
 
 
 from flask import Flask, render_template, request, redirect, url_for, escape, session, make_response, request, jsonify  
@@ -60,7 +61,8 @@ def testapi1():
         hello()
         print templist
         print humlist
-        return json.dumps({"result":"Success", "response_content":templist, "response_humidity": humlist})
+        print dewlist
+        return json.dumps({"result":"Success", "response_content":templist, "response_humidity": humlist, "response_dew": dewlist})
 
 
 
@@ -91,13 +93,19 @@ def hello():
 
 
 def get_gdstore_data():
+    start_date = datetime.datetime(2019,1,8)
+    print start_date
     logger.info("enter into gdstore function")
     print "enter into gdstore function"
     client = datastore.Client()
     logger.info(client)
     query = client.query(kind='Thermo')
+    #query.order = ['published_at']
+    #query.add_filter('published_at', '>', start_date)
     query.add_filter('device_id', '=', '1c002e000347363339343638')
-    result = list(query.fetch(limit = 10))
+    
+    result = list(query.fetch(limit = 100))
+    print result
     logger.info("Data fetched from server is")
     prepare_data(result)
     
@@ -127,7 +135,7 @@ def prepare_humiditylist(parseddata,time ):
     humiditydict.update({"time":time})
     humiditydict.update({"humidity": Humidity})
     humlist.append(humiditydict)
-    print "Humidity List is {0} \r\n ".format( humlist )
+    #print "Humidity List is {0} \r\n ".format( humlist )
 
 def prepare_templist(parseddata,time):
     Temperature = parseddata[1]
@@ -137,7 +145,7 @@ def prepare_templist(parseddata,time):
     tempdict.update({"time": time})
     tempdict.update({"temperature": Temperature})
     templist.append(tempdict)
-    print "Temperature list is {0}".format( templist )
+    #print "Temperature list is {0}".format( templist )
 
 def prepare_dewlist(parseddata,time):
     Dew = parseddata[2]
@@ -147,7 +155,7 @@ def prepare_dewlist(parseddata,time):
     dewdict.update({"time" :time})
     dewdict.update({"dew" : Dew})
     dewlist.append(dewdict)
-    print "Dew List is {0}".format( dewlist )
+    #print "Dew List is {0}".format( dewlist )
 
 def prepare_pm1list(parseddata, time):
     PM1 = parseddata[3]
@@ -157,7 +165,7 @@ def prepare_pm1list(parseddata, time):
     pm1dict.update({"time" : time})
     pm1dict.update({"pm1" : PM1})
     PM1list.append(pm1dict)
-    print "PM1 list is {0}".format(PM1list)
+    #print "PM1 list is {0}".format(PM1list)
 
 def prepare_pm25list(parseddata, time):
     PM25 = parseddata[4]
@@ -167,7 +175,7 @@ def prepare_pm25list(parseddata, time):
     pm25dict.update({"time" : time})
     pm25dict.update({"pm25" : PM25})
     PM25list.append(pm25dict)
-    print "PM25 list is {0}".format(PM25list)
+    #print "PM25 list is {0}".format(PM25list)
 
 def prepare_pm10list(parseddata, time):
     PM10 = parseddata[5]
@@ -177,7 +185,7 @@ def prepare_pm10list(parseddata, time):
     pm10dict.update({"time" : time})
     pm10dict.update({"pm10" : PM10})
     PM10list.append(pm10dict)
-    print "PM10 list is {0}".format(PM10list)            
+    #print "PM10 list is {0}".format(PM10list)            
 
 
 

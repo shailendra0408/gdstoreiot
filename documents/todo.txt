@@ -55,3 +55,6 @@ links for simulating the device using MQTT
 @To-do
 1. Some documentation about GDStore for example what is entity, variables, what is the id and all 
 that. Have totally forgot it 
+
+25/08/2019  
+
