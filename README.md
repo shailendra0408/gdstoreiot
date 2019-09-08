@@ -3,6 +3,14 @@ Repo for
 * Using google data store for storing data pushed by a IoT device ( virtual or real device) 
 * Developing a small UI to display real time data
 
+## Technology used
+* Google Data store 
+* Plotly ( for graph )
+* Java Script 
+* Python 2.7 
+* Nginx 
+* Flask 
+
 ## Status Quo 
 Currently this is very limited edition of what can be done. There are lot of to-do's in queue for example 
 * using the google IoT core 
