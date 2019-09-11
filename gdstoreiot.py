@@ -83,28 +83,27 @@ def testapi1():
 #    query_user_exist = """SELECT * FROM ADMIN_DATA WHERE EMAIL_ID = %s"""
 #    args = (emailid)
     
-
+#@todo - remove below function down the line 
 @application.route("/gdstoretest")
 def hello():
     logger.info("enter into gdstore function")
     get_gdstore_data()
     return "<h1 style='color:blue'>Hello There!</h1>"
-    print "i am here"
 
 
 def get_gdstore_data():
-    start_date = datetime.datetime(2019,1,8)
-    print start_date
+    #start_date = datetime.datetime(2019,8,1)
+    #print start_date
     logger.info("enter into gdstore function")
     print "enter into gdstore function"
     client = datastore.Client()
     logger.info(client)
     query = client.query(kind='Thermo')
-    #query.order = ['published_at']
+    query.order = ['-published_at']
     #query.add_filter('published_at', '>', start_date)
     query.add_filter('device_id', '=', '1c002e000347363339343638')
     
-    result = list(query.fetch(limit = 100))
+    result = list(query.fetch(limit = 10))
     print result
     logger.info("Data fetched from server is")
     prepare_data(result)
