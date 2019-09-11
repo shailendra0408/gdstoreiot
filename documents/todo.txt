@@ -56,5 +56,16 @@ links for simulating the device using MQTT
 1. Some documentation about GDStore for example what is entity, variables, what is the id and all 
 that. Have totally forgot it 
 
-25/08/2019  
+10/09/2019 
+1. Google datastore don't provide the functionality of differnt data buckets unlike other timeseries database. 
+2. Thus to make these buckets, computation has to be done locally 
+        --> Fetch the data for hour from Google data store directly ( 60 data points considering 
+        1 minutes data push interval - not a good way !!!!!)
+        --> Run a script which fetch data from the google datastore in the background, prepare different buckets 
+        and populate a local DB. 
+        --> Queries for hour, week and month would fetch data form local database. 
+        
+3. After this is complete, add functionality to select different devices using device ID  and user authentication
+4. Use OTP based login for the same. 
+
 
